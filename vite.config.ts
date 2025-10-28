@@ -38,6 +38,16 @@ export default defineConfig({
       '@': resolve('./src'),
     },
   },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
   server: {
     host: true,
     port: 3000,
