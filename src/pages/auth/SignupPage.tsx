@@ -47,20 +47,24 @@ const SignupPage: React.FC = () => {
       });
 
       // Crear documento en Firestore
-      await setDoc(doc(db, 'users', userCredential.user.uid), {
+      const userData: any = {
         uid: userCredential.user.uid,
         email: formData.email,
         role: formData.role,
-        status: formData.role === 'doctor' ? 'offline' : undefined,
         profile: {
           name: formData.name,
           phone: formData.phone,
-          ...(formData.role === 'doctor' && {
-            specialty: '',
-            license: '',
-          }),
         },
-      });
+      };
+
+      // Solo agregar status para doctores
+      if (formData.role === 'doctor') {
+        userData.status = 'offline';
+        userData.profile.specialty = '';
+        userData.profile.license = '';
+      }
+
+      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
 
       // La redirección se maneja automáticamente en App.tsx
     } catch (err: any) {

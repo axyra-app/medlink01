@@ -7,6 +7,9 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
 import LoginPage from '@/pages/auth/LoginPage';
 import SignupPage from '@/pages/auth/SignupPage';
 
+// Home page
+import HomePage from '@/pages/HomePage';
+
 // Patient pages
 import DoctorEnRoute from '@/pages/patient/DoctorEnRoute';
 import PatientHome from '@/pages/patient/PatientHome';
@@ -84,9 +87,19 @@ const App: React.FC = () => {
             }
           />
 
-          {/* Patient Routes */}
+          {/* Home Route */}
           <Route
             path='/home'
+            element={
+              <ProtectedRoute allowedRoles={['patient', 'doctor']} redirectTo='/login'>
+                <HomePage />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Patient Routes */}
+          <Route
+            path='/patient/home'
             element={
               <ProtectedRoute allowedRoles={['patient']} redirectTo='/doctor/dashboard'>
                 <PatientHome />
