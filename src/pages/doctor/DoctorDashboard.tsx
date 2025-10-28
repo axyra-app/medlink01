@@ -109,7 +109,7 @@ const DoctorDashboard: React.FC = () => {
         {isOnline ? (
           <div className='card'>
             <h3 className='font-semibold text-gray-900 mb-4'>Solicitudes Disponibles</h3>
-            <AvailableRequestsList doctorId={firestoreUser?.uid || ''} onServiceAccepted={handleServiceAccepted} />
+            <AvailableRequestsList onServiceAccepted={handleServiceAccepted} />
           </div>
         ) : (
           <div className='card bg-gray-50 border-gray-200'>

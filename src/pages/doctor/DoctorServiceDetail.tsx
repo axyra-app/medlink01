@@ -172,7 +172,7 @@ const DoctorServiceDetail: React.FC = () => {
         {/* Mapa con ubicación del paciente */}
         <div className='card p-0 overflow-hidden'>
           <div className='h-64'>
-            <DoctorServiceMap patientLocation={serviceRequest.patientLocation} serviceId={id!} />
+            <DoctorServiceMap patientLocation={serviceRequest.patientLocation} />
           </div>
         </div>
 

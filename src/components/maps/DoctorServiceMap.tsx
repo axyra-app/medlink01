@@ -8,10 +8,9 @@ interface DoctorServiceMapProps {
     longitude: number;
     address: string;
   };
-  serviceId: string;
 }
 
-export const DoctorServiceMap: React.FC<DoctorServiceMapProps> = ({ patientLocation, serviceId }) => {
+export const DoctorServiceMap: React.FC<DoctorServiceMapProps> = ({ patientLocation }) => {
   const [viewState, setViewState] = useState({
     longitude: patientLocation.longitude,
     latitude: patientLocation.latitude,

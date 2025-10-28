@@ -9,11 +9,10 @@ import { AlertCircle, Clock, MapPin } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 
 interface AvailableRequestsListProps {
-  doctorId: string;
   onServiceAccepted: (serviceId: string) => void;
 }
 
-export const AvailableRequestsList: React.FC<AvailableRequestsListProps> = ({ doctorId, onServiceAccepted }) => {
+export const AvailableRequestsList: React.FC<AvailableRequestsListProps> = ({ onServiceAccepted }) => {
   const { firestoreUser } = useAuth();
   const [requests, setRequests] = useState<ServiceRequest[]>([]);
   const [loading, setLoading] = useState(true);

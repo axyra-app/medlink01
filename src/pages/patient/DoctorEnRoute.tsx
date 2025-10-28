@@ -12,7 +12,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const DoctorEnRoute: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { firestoreUser } = useAuth();
+  const { } = useAuth();
   const [serviceRequest, setServiceRequest] = useState<ServiceRequest | null>(null);
   const [doctorLocation, setDoctorLocation] = useState<DoctorLocation | null>(null);
   const [loading, setLoading] = useState(true);
@@ -149,7 +149,6 @@ const DoctorEnRoute: React.FC = () => {
             <DoctorRouteMap
               patientLocation={serviceRequest.patientLocation}
               doctorLocation={doctorLocation}
-              serviceId={id!}
             />
           </div>
         </div>

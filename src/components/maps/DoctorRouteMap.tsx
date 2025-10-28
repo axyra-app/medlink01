@@ -14,10 +14,9 @@ interface DoctorRouteMapProps {
     longitude: number;
     timestamp: Date;
   } | null;
-  serviceId: string;
 }
 
-export const DoctorRouteMap: React.FC<DoctorRouteMapProps> = ({ patientLocation, doctorLocation, serviceId }) => {
+export const DoctorRouteMap: React.FC<DoctorRouteMapProps> = ({ patientLocation, doctorLocation }) => {
   const mapRef = useRef<any>(null);
   const [viewState, setViewState] = useState({
     longitude: patientLocation.longitude,

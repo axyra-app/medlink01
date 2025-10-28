@@ -11,7 +11,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 const ServiceInProgress: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { firestoreUser } = useAuth();
+  const { } = useAuth();
   const [serviceRequest, setServiceRequest] = useState<ServiceRequest | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
