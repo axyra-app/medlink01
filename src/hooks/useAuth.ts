@@ -8,7 +8,7 @@ export const useAuth = () => {
   const { user, firestoreUser, loading, setUser, setFirestoreUser, setLoading } = useAuthStore();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
 
       if (user) {
@@ -21,19 +21,19 @@ export const useAuth = () => {
           } else {
             setFirestoreUser(null);
           }
+          setLoading(false);
         });
 
         // Cleanup function
         return () => unsubscribeUser();
       } else {
         setFirestoreUser(null);
+        setLoading(false);
       }
-
-      setLoading(false);
     });
 
     return () => unsubscribe();
-  }, [setUser, setFirestoreUser, setLoading]);
+  }, []); // Remover dependencias para evitar loops
 
   return {
     user,
