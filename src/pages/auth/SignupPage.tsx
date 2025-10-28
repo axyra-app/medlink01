@@ -14,7 +14,7 @@ const SignupPage: React.FC = () => {
     password: '',
     confirmPassword: '',
     phone: '',
-    role: 'patient' as 'patient' | 'doctor',
+    role: 'patient' as 'patient' | 'doctor' | 'psychologist',
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -57,8 +57,8 @@ const SignupPage: React.FC = () => {
         },
       };
 
-      // Solo agregar status para doctores
-      if (formData.role === 'doctor') {
+      // Solo agregar status para doctores y psicólogos
+      if (formData.role === 'doctor' || formData.role === 'psychologist') {
         userData.status = 'offline';
         userData.profile.specialty = '';
         userData.profile.license = '';
@@ -103,6 +103,7 @@ const SignupPage: React.FC = () => {
               >
                 <option value='patient'>Paciente</option>
                 <option value='doctor'>Doctor</option>
+                <option value='psychologist'>Psicólogo</option>
               </select>
             </div>
 

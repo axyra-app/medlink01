@@ -52,24 +52,26 @@ const HomePage: React.FC = () => {
       <div className='px-4 py-6 space-y-6'>
         {/* Estadísticas rápidas */}
         <div className='grid grid-cols-2 gap-4'>
-          <div className='card text-center'>
-            <div className='w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3'>
-              <Heart className='h-6 w-6 text-blue-600' />
+          <div className='card text-center bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200'>
+            <div className='w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-3'>
+              <Heart className='h-6 w-6 text-white' />
             </div>
             <h3 className='font-semibold text-gray-900'>
               {isDoctor ? 'Pacientes Atendidos' : 'Consultas Realizadas'}
             </h3>
             <p className='text-2xl font-bold text-blue-600'>0</p>
+            <p className='text-xs text-gray-500 mt-1'>Este mes</p>
           </div>
 
-          <div className='card text-center'>
-            <div className='w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3'>
-              <Star className='h-6 w-6 text-green-600' />
+          <div className='card text-center bg-gradient-to-br from-green-50 to-green-100 border-green-200'>
+            <div className='w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3'>
+              <Star className='h-6 w-6 text-white' />
             </div>
             <h3 className='font-semibold text-gray-900'>
               {isDoctor ? 'Calificación Promedio' : 'Calificación Recibida'}
             </h3>
             <p className='text-2xl font-bold text-green-600'>-</p>
+            <p className='text-xs text-gray-500 mt-1'>Basado en reseñas</p>
           </div>
         </div>
 

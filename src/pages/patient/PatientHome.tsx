@@ -2,6 +2,8 @@ import { PatientMap } from '@/components/maps/PatientMap';
 import { SymptomsForm } from '@/components/patient/SymptomsForm';
 import { Alert } from '@/components/ui/Alert';
 import { useAuth } from '@/hooks/useAuth';
+import { db } from '@/lib/firebase';
+import { addDoc, collection } from 'firebase/firestore';
 import { Clock, MapPin, Stethoscope } from 'lucide-react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -25,27 +27,30 @@ const PatientHome: React.FC = () => {
     setError('');
 
     try {
-      // Simular llamada a Cloud Function requestService
-      // En producción, esto sería una llamada HTTP a tu Cloud Function
-      const response = await fetch('/api/requestService', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...serviceData,
-          patientId: firestoreUser?.uid,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Error al solicitar el servicio');
+      if (!firestoreUser?.uid) {
+        throw new Error('Usuario no autenticado');
       }
 
-      const { serviceId } = await response.json();
+      // Crear solicitud de servicio directamente en Firestore
+      const serviceRequestData = {
+        patientId: firestoreUser.uid,
+        patientName: firestoreUser.profile?.name || 'Paciente',
+        patientLocation: serviceData.location,
+        symptoms: serviceData.symptoms,
+        urgency: serviceData.urgency,
+        status: 'pending',
+        doctorId: null,
+        doctorName: null,
+        acceptedAt: null,
+        startedAt: null,
+        completedAt: null,
+        createdAt: Date.now(),
+      };
 
+      const docRef = await addDoc(collection(db, 'serviceRequests'), serviceRequestData);
+      
       // Redirección inmediata a la página de espera
-      navigate(`/patient/request/${serviceId}/waiting`);
+      navigate(`/patient/request/${docRef.id}/waiting`);
     } catch (err: any) {
       setError(err.message || 'Error al solicitar el servicio');
     } finally {

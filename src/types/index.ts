@@ -40,5 +40,5 @@ export interface GeohashNeighbors {
 }
 
 export type ServiceStatus = ServiceRequest['status'];
-export type UserRole = 'patient' | 'doctor' | 'guest';
+export type UserRole = 'patient' | 'doctor' | 'psychologist' | 'guest';
 export type DoctorStatus = 'online' | 'offline' | 'in-service';

@@ -21,6 +21,9 @@ import WaitingForDoctor from '@/pages/patient/WaitingForDoctor';
 import DoctorDashboard from '@/pages/doctor/DoctorDashboard';
 import DoctorServiceDetail from '@/pages/doctor/DoctorServiceDetail';
 
+// Psychologist pages
+import PsychologistDashboard from '@/pages/psychologist/PsychologistDashboard';
+
 // Protected Route Component
 const ProtectedRoute: React.FC<{
   children: React.ReactNode;
@@ -56,6 +59,8 @@ const PublicRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // Redirigir según el rol
     if (role === 'doctor') {
       return <Navigate to='/doctor/dashboard' replace />;
+    } else if (role === 'psychologist') {
+      return <Navigate to='/psychologist/dashboard' replace />;
     } else if (role === 'patient') {
       return <Navigate to='/home' replace />;
     }
@@ -157,8 +162,18 @@ const App: React.FC = () => {
             }
           />
 
+          {/* Psychologist Routes */}
+          <Route
+            path='/psychologist/dashboard'
+            element={
+              <ProtectedRoute allowedRoles={['psychologist']} redirectTo='/home'>
+                <PsychologistDashboard />
+              </ProtectedRoute>
+            }
+          />
+
           {/* Default redirect */}
-          <Route path='/' element={<Navigate to='/login' replace />} />
+          <Route path='/' element={<Navigate to='/home' replace />} />
         </Routes>
       </div>
     </Router>
