@@ -4,13 +4,13 @@ import { create } from 'zustand';
 export interface FirestoreUser {
   uid: string;
   email: string;
-  role: 'patient' | 'doctor' | 'guest';
+  role: 'patient' | 'doctor' | 'psychologist' | 'guest';
   status?: 'online' | 'offline' | 'in-service';
   profile?: {
     name: string;
     phone: string;
-    specialty?: string; // Solo para doctores
-    license?: string; // Solo para doctores
+    specialty?: string; // Solo para doctores y psicólogos
+    license?: string; // Solo para doctores y psicólogos
   };
 }
 
