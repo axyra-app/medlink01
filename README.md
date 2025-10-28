@@ -25,6 +25,7 @@ Una aplicación web progresiva (PWA) que conecta pacientes con doctores para con
 ## 📱 Flujo de la Aplicación
 
 ### Para Pacientes:
+
 1. **Login/Registro** → Seleccionar rol "Paciente"
 2. **Home** → Ver mapa y describir síntomas
 3. **Esperando Doctor** → Estado "pending"
@@ -33,6 +34,7 @@ Una aplicación web progresiva (PWA) que conecta pacientes con doctores para con
 6. **Reseña** → Estado "completed", calificar servicio
 
 ### Para Doctores:
+
 1. **Login/Registro** → Seleccionar rol "Doctor"
 2. **Dashboard** → Toggle online/offline
 3. **Lista de Solicitudes** → Ver solicitudes disponibles
@@ -63,14 +65,17 @@ npm run preview
 ## 🔥 Configuración de Firebase
 
 ### 1. Crear Proyecto en Firebase
+
 - Ve a [Firebase Console](https://console.firebase.google.com/)
 - Crea un nuevo proyecto: `medlink-4a4fd`
 
 ### 2. Habilitar Authentication
+
 - Ve a **Authentication** → **Sign-in method**
 - Habilita **Email/Password**
 
 ### 3. Crear Firestore Database
+
 - Ve a **Firestore Database**
 - Crea base de datos en modo **test**
 
@@ -84,17 +89,17 @@ service cloud.firestore {
     match /users/{userId} {
       allow read, write: if request.auth != null && request.auth.uid == userId;
     }
-    
+
     // Reglas para solicitudes de servicio
     match /serviceRequests/{requestId} {
       allow read, write: if request.auth != null;
     }
-    
+
     // Reglas para ubicaciones de doctores
     match /doctorLocations/{locationId} {
       allow read, write: if request.auth != null;
     }
-    
+
     // Reglas para reseñas
     match /reviews/{reviewId} {
       allow read, write: if request.auth != null;
@@ -113,7 +118,7 @@ Fields:
 - status (Ascending)
 - createdAt (Ascending)
 
-Collection: serviceRequests  
+Collection: serviceRequests
 Fields:
 - status (Ascending)
 - patientGeohash (Ascending)
@@ -138,6 +143,7 @@ Fields:
 ## 🚀 Despliegue en Vercel
 
 ### 1. Conectar con GitHub
+
 ```bash
 # Inicializar Git
 git init
@@ -150,11 +156,13 @@ git push -u origin main
 ```
 
 ### 2. Desplegar en Vercel
+
 1. Ve a [Vercel](https://vercel.com/)
 2. **Import Project** → Selecciona tu repositorio de GitHub
 3. **Deploy** → La aplicación se desplegará automáticamente
 
 ### 3. Configurar Variables de Entorno (Opcional)
+
 Si prefieres usar variables de entorno en lugar de hardcoded:
 
 ```bash
