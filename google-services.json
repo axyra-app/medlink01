@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "231645471951",
+    "project_id": "medlink-4a4fd",
+    "storage_bucket": "medlink-4a4fd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231645471951:android:2378c968bfc69ee1bc03ba",
+        "android_client_info": {
+          "package_name": "com.medlink.medical"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaYlLBbc458qQap94WOKCoJbGLSfNdbEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
